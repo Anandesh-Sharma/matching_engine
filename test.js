@@ -1,0 +1,28 @@
+const io = require('socket.io-client');
+const socket = io('http://localhost:5001');
+
+socket.on('connect', () => {
+    console.log('Connected to the server');
+});
+
+socket.on('order_received', (data) => {
+    console.log('Order received:', data);
+});
+
+// Example of sending an order
+socket.emit('new_order', {
+    user_id: 'user1',
+    asset: 'Asset1',
+    order_type: 'buy',
+    price: 10.50,
+    amount: 100
+});
+
+
+socket.emit('new_order', {
+    user_id: 'user1',
+    asset: 'Asset1',
+    order_type: 'sell',
+    price: 10.50,
+    amount: 100
+});
