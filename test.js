@@ -9,20 +9,26 @@ socket.on('order_received', (data) => {
     console.log('Order received:', data);
 });
 
+
+socket.on('order_mathched', (data) => {
+    console.log('Order matched:', data);
+});
+
+
 // Example of sending an order
 socket.emit('new_order', {
     user_id: 'user1',
     asset: 'Asset1',
     order_type: 'buy',
     price: 10.50,
-    amount: 100
+    amount: 60
 });
 
 
 socket.emit('new_order', {
-    user_id: 'user1',
+    user_id: 'user2',
     asset: 'Asset1',
     order_type: 'sell',
     price: 10.50,
-    amount: 100
+    amount: 60
 });
