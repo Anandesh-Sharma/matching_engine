@@ -42,7 +42,12 @@ class OrderBook:
                 # Match found
                 matched_amount = min(best_buy.amount, best_sell.amount)
                 print(f"Matching {matched_amount} of {best_buy.user_id} (buy) with {best_sell.user_id} (sell) at price {best_sell.price}")
-
+                emit('order_matched', {'status': 'success', 
+                                        'matched_amount': matched_amount, 
+                                        'buyer': best_buy.user_id, 
+                                        'seller': best_sell.user_id, 
+                                        'price': best_sell.price}, 
+                                        broadcast=True)
                 # Update amounts
                 best_buy.amount -= matched_amount
                 best_sell.amount -= matched_amount
