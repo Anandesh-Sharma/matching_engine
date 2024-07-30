@@ -10,7 +10,7 @@ socket.on('order_received', (data) => {
 });
 
 
-socket.on('order_mathched', (data) => {
+socket.on('order_matched', (data) => {
     console.log('Order matched:', data);
 });
 
