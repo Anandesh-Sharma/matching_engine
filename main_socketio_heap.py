@@ -75,6 +75,7 @@ engine = MatchingEngine()
 
 @socketio.on('new_order')
 def handle_new_order(data):
+    print(data)
     user_id = data['user_id']
     asset = data['asset']
     order_type = data['order_type']
